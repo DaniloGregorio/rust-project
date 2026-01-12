@@ -1,5 +1,11 @@
 use actix_web::{HttpResponse, HttpServer, web,App, Responder,get,post};
 
+#[get("/person")]
+async fn hello(info: web::Query<Info>) -> impl Responder{
+  let msg = format!("name :{}, age : {}",info.name,info.age);
+  HttpResponse::Ok().body(msg)
+    
+}
 
 #[get("/one")]
 async  fn one() -> impl Responder{
